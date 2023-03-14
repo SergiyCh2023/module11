@@ -37,13 +37,14 @@ public class Main {
 
 
 
-    public static List<String>  unitedSortedNumbers (List<String> list) {
-        List<String> result = list.stream()
+    public static String []  unitedSortedNumbers (List<String> list) {
+        String [] result = list.stream()
                 .map(s -> s.split("\\,"))
                 .flatMap(Arrays::stream)
                 .map(s -> s.trim())
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()).toArray(list.toArray(new String[0]));
+
         return result;
     }
 
