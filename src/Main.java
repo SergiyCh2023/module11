@@ -38,15 +38,22 @@ public class Main {
 
 
     public static String  unitedSortedNumbers (String [] array) {
+
         List<String> result =Arrays.asList(array).stream()
                 .map(s -> s.split("\\,"))
                 .flatMap(Arrays::stream)
                 .map(s -> s.trim())
-                .sorted()
+                .sorted(new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        return Integer.parseInt(o1)-Integer.parseInt(o2);
+                    }
+                })
                 .collect(Collectors.toList());
 
         return String.join(",", result);
     }
+
 
 
 
